@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app2222/models/student.dart';
 
 void main() {
   runApp(MaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  String mesaj = "Merhaba İlk Uygulamam";
+  String mesaj = "Öğrenci Takip Sistemi";
+  List <Student> students = [Student("Engin","Demiroğ",25),Student("Kerem","Varış",65),Student("Halil ","Duymaz",45)];
+
+  var ogrenciler = [
+    "Engin Demirog ",
+    "Kerem Varıs",
+    "Berkay Bilgin"];
+
   @override
   Widget build(BuildContext context) {
-    var ogrenciler = ["Engin Demirog ", "Kerem Varıs", "Berkay Bilgin"];
+
 
     return Scaffold(
       appBar: AppBar(
@@ -18,9 +26,19 @@ class MyApp extends StatelessWidget {
         children: <Widget>[
           Expanded(
               child: ListView.builder(
-                  itemCount: ogrenciler.length,
+                  itemCount: students.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Text(ogrenciler[index]);
+                    return ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage("https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png"),
+                      ),
+                      title: Text(students[index].firsName + " "+ students[index].lastName),
+                      subtitle:Text("sınavdan aldığı not: "+ students[index].grade.toString()),
+                      trailing: buildStatusIcon(students[index].grade),
+                      onTap: (){
+                        print(students[index].firsName + " "+ students[index].lastName);
+                      },
+                    );
                   })),
           Center(
             child: RaisedButton(
@@ -38,15 +56,6 @@ class MyApp extends StatelessWidget {
 
   String sinavHesapla(int puan) {
 
-    String mesaj = "";
-    if (puan >= 50) {
-      mesaj = "Gecti";
-    } else if (puan >= 40) {
-      mesaj = "Butunlemeye Kaldı";
-    } else {
-      mesaj = "Kaldi";
-    }
-    return mesaj;
   }
 
   void mesajGoster(BuildContext context,String mesaj) {
@@ -57,4 +66,15 @@ class MyApp extends StatelessWidget {
 
     showDialog(context: context, builder: (BuildContext context) => alert);
   }
-}
+
+  Widget buildStatusIcon(int grade) {
+    if (grade >= 50) {
+       return Icon(Icons.done);
+    } else if (grade >= 40) {
+      return Icon(Icons.album);
+    } else {
+      return Icon(Icons.clear);
+    }
+  }
+  }
+
