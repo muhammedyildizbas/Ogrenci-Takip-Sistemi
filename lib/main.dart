@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
                         backgroundImage: NetworkImage("https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png"),
                       ),
                       title: Text(students[index].firsName + " "+ students[index].lastName),
-                      subtitle:Text("sınavdan aldığı not: "+ students[index].grade.toString()),
+                      subtitle:Text("sınavdan aldığı not: "+ students[index].grade.toString()+" ["+students[index].getStatus+"]"),
                       trailing: buildStatusIcon(students[index].grade),
                       onTap: (){
                         print(students[index].firsName + " "+ students[index].lastName);
@@ -55,6 +55,18 @@ class MyApp extends StatelessWidget {
   }
 
   String sinavHesapla(int puan) {
+String mesaj = "";
+if(puan>=50){
+  mesaj="Geçti";
+  }
+ else if (puan >=40){
+   mesaj="Bütünlemeye Kaldı";
+ }
+ else {
+   mesaj="Kaldi";
+
+ }
+ return mesaj;
 
   }
 
