@@ -6,33 +6,21 @@ void main() {
 
 class MyApp extends StatelessWidget {
   String mesaj = "Merhaba İlk Uygulamam";
+  var ogrenciler = [
+    "Engin Demirog ",
+    "Kerem Varıs",
+    "Berkay Bilgin"
+  ];
   @override
   Widget build(BuildContext context) {
-    var ogrenciler = ["Engin Demirog ", "Kerem Varıs", "Berkay Bilgin"];
+
 
     return Scaffold(
       appBar: AppBar(
         title: Text(mesaj),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-              child: ListView.builder(
-                  itemCount: ogrenciler.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Text(ogrenciler[index]);
-                  })),
-          Center(
-            child: RaisedButton(
-              child: Text("Sonuc"),
-              onPressed: () {
-                var mesaj = sinavHesapla(55);
-                mesajGoster(context, mesaj);
-              },
-            ),
-          ),
-        ],
-      ),
+      body: buildBody(context)
+      ,
     );
   }
 
@@ -56,5 +44,27 @@ class MyApp extends StatelessWidget {
     );
 
     showDialog(context: context, builder: (BuildContext context) => alert);
+  }
+
+ Widget buildBody(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Expanded(
+            child: ListView.builder(
+                itemCount: ogrenciler.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Text(ogrenciler[index]);
+                })),
+        Center(
+          child: RaisedButton(
+            child: Text("Sonuc"),
+            onPressed: () {
+              var mesaj = sinavHesapla(55);
+              mesajGoster(context, mesaj);
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
