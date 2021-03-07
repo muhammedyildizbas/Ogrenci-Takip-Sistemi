@@ -5,8 +5,16 @@ void main() {
   runApp(MaterialApp(home: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+  }
+
+class _MyAppState extends State<MyApp> {
   String mesaj = "Öğrenci Takip Sistemi";
+
+  String seciliOgrenci= "abc";
+
   List <Student> students = [Student("Engin","Demiroğ",25),Student("Kerem","Varış",65),Student("Halil ","Duymaz",45)];
 
   var ogrenciler = [
@@ -36,10 +44,15 @@ class MyApp extends StatelessWidget {
                       subtitle:Text("sınavdan aldığı not: "+ students[index].grade.toString()+" ["+students[index].getStatus+"]"),
                       trailing: buildStatusIcon(students[index].grade),
                       onTap: (){
-                        print(students[index].firsName + " "+ students[index].lastName);
+                       setState(() {
+                         seciliOgrenci = students[index].firsName + " "+ students[index].lastName;
+                       });
+                        print(seciliOgrenci);
+
                       },
                     );
                   })),
+          Text("Seçili Öğrenci: "+ seciliOgrenci),
           Center(
             child: RaisedButton(
               child: Text("Sonuc"),
@@ -88,5 +101,5 @@ if(puan>=50){
       return Icon(Icons.clear);
     }
   }
-  }
+}
 
