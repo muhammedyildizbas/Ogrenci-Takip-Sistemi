@@ -13,15 +13,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String mesaj = "Öğrenci Takip Sistemi";
 
-  String seciliOgrenci = "abc";
+  Student selectedStudent=Student.withId(0, "", "", 0);
 
   List<Student> students = [
-    Student("Engin", "Demiroğ", 25),
-    Student("Kerem", "Varış", 65),
-    Student("Halil ", "Duymaz", 45)
+    Student.withId(1,"Engin", "Demiroğ", 25),
+    Student.withId(2,"Kerem", "Varış", 65),
+    Student.withId(3,"Halil ", "Duymaz", 45)
   ];
-
-  var ogrenciler = ["Engin Demirog ", "Kerem Varıs", "Berkay Bilgin"];
 
   @override
   Widget build(BuildContext context) {
@@ -51,15 +49,13 @@ class _MyAppState extends State<MyApp> {
                       trailing: buildStatusIcon(students[index].grade),
                       onTap: () {
                         setState(() {
-                          seciliOgrenci = students[index].firsName +
-                              " " +
-                              students[index].lastName;
+                         selectedStudent = students[index];
                         });
-                        print(seciliOgrenci);
+                        print(selectedStudent.firsName + " "+ selectedStudent.lastName);
                       },
                     );
                   })),
-          Text("Seçili Öğrenci: " + seciliOgrenci),
+          Text("Seçili Öğrenci: " + selectedStudent.firsName + " "+ selectedStudent.lastName),
           Row(
             children: <Widget>[
               Flexible(
@@ -77,7 +73,8 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                   onPressed: () {
-                    var mesaj = sinavHesapla(55);
+
+                    var mesaj = "Eklendi";
                     mesajGoster(context, mesaj);
                   },
                 ),
@@ -97,7 +94,7 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                   onPressed: () {
-                    var mesaj = sinavHesapla(55);
+                    var mesaj = "Güncellendi";
                     mesajGoster(context, mesaj);
                   },
                 ),
@@ -117,7 +114,11 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                   onPressed: () {
-                    var mesaj = sinavHesapla(55);
+                    setState(() {
+                      students.remove(selectedStudent);
+                    });
+
+                    var mesaj = "Silindi: "+ selectedStudent.firsName+" "+ selectedStudent.lastName;
                     mesajGoster(context, mesaj);
                   },
                 ),
@@ -129,21 +130,10 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  String sinavHesapla(int puan) {
-    String mesaj = "";
-    if (puan >= 50) {
-      mesaj = "Geçti";
-    } else if (puan >= 40) {
-      mesaj = "Bütünlemeye Kaldı !";
-    } else {
-      mesaj = "Kaldi";
-    }
-    return mesaj;
-  }
 
   void mesajGoster(BuildContext context, String mesaj) {
     var alert = AlertDialog(
-      title: Text("Sinav Sonucu"),
+      title: Text("İşlem Sonucu"),
       content: Text(mesaj),
     );
 
