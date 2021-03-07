@@ -66,30 +66,33 @@ class _MyAppState extends State<MyApp> {
                 fit: FlexFit.tight,
                 flex: 2,
                 child: RaisedButton(
-                  color : Colors.greenAccent,
-                    child: Row(
-                      children: <Widget>[
-                        Icon(Icons.add),
-                        SizedBox(width: 5.0,),
-                        Text("Yeni Öğrenci"),
-                      ],
-                    ),
-                    onPressed: () {
-                      var mesaj = sinavHesapla(55);
-                      mesajGoster(context, mesaj);
-                    },
+                  color: Colors.greenAccent,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.add),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text("Yeni Öğrenci"),
+                    ],
                   ),
-
+                  onPressed: () {
+                    var mesaj = sinavHesapla(55);
+                    mesajGoster(context, mesaj);
+                  },
                 ),
+              ),
               Flexible(
                 fit: FlexFit.tight,
                 flex: 2,
                 child: RaisedButton(
-                  color : Colors.yellowAccent,
+                  color: Colors.yellowAccent,
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.update),
-                      SizedBox(width: 5.0,),
+                      SizedBox(
+                        width: 5.0,
+                      ),
                       Text("Güncelle"),
                     ],
                   ),
@@ -98,17 +101,18 @@ class _MyAppState extends State<MyApp> {
                     mesajGoster(context, mesaj);
                   },
                 ),
-
               ),
               Flexible(
                 fit: FlexFit.tight,
                 flex: 1,
                 child: RaisedButton(
-                  color : Colors.redAccent,
+                  color: Colors.redAccent,
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.delete),
-                      SizedBox(width: 5.0,),
+                      SizedBox(
+                        width: 2.0,
+                      ),
                       Text("Sil"),
                     ],
                   ),
@@ -117,7 +121,6 @@ class _MyAppState extends State<MyApp> {
                     mesajGoster(context, mesaj);
                   },
                 ),
-
               ),
             ],
           )
