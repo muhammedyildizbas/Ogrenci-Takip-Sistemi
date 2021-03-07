@@ -134,7 +134,7 @@ class _MyAppState extends State<MyApp> {
     if (puan >= 50) {
       mesaj = "Geçti";
     } else if (puan >= 40) {
-      mesaj = "Bütünlemeye Kaldı";
+      mesaj = "Bütünlemeye Kaldı !";
     } else {
       mesaj = "Kaldi";
     }
