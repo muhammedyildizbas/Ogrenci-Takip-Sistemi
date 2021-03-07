@@ -1,16 +1,25 @@
 class Student {
-
+  int id;
   String firsName ;
   String lastName;
   int grade;
   String _status;
 
-  Student (String firstName , String lastName , int grade ){
+  Student.withId(int id,String firstName , String lastName , int grade ){
+    this.id =id;
     this.firsName = firstName;
     this.lastName = lastName;
     this.grade = grade;
 
-  }
+  }  //güncelleme yapılırken kullanılacak id li sistem
+
+  Student (int id,String firstName , String lastName , int grade ){
+    this.id =id;
+    this.firsName = firstName;
+    this.lastName = lastName;
+    this.grade = grade;
+
+  } // ekleme yapılırken kullanılacak sistem
   String get getFirstName{
     return "OGR - "+ this.firsName;
 
