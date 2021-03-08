@@ -67,7 +67,7 @@ class _StudentAddState extends State with StudentValidationMixin {
   Widget buildGradeField() {
     return  TextFormField(
       initialValue: selectedStudent.grade.toString(),
-      decoration: InputDecoration(labelText: "Aldığı Not ", hintText: "65"),
+      decoration: InputDecoration(labelText: "Aldığı Not ", hintText: "70"),
       validator: validateGrate,
       onSaved:  (String value){
         selectedStudent.grade = int.parse(value);
