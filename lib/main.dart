@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app2222/models/student.dart';
+import 'package:flutter_app2222/screens/student_add.dart';
 
 void main() {
   runApp(MaterialApp(home: MyApp()));
@@ -74,8 +75,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   onPressed: () {
 
-                    var mesaj = "Eklendi";
-                    mesajGoster(context, mesaj);
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentAdd()));
                   },
                 ),
               ),
