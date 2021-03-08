@@ -1,13 +1,13 @@
 class Student {
   int id;
-  String firsName ;
+  String firstName ;
   String lastName;
   int grade;
   String _status;
 
   Student.withId(int id,String firstName , String lastName , int grade ){
     this.id =id;
-    this.firsName = firstName;
+    this.firstName = firstName;
     this.lastName = lastName;
     this.grade = grade;
 
@@ -15,7 +15,7 @@ class Student {
 
   Student (int id,String firstName , String lastName , int grade ){
     this.id =id;
-    this.firsName = firstName;
+    this.firstName = firstName;
     this.lastName = lastName;
     this.grade = grade;
 
@@ -24,11 +24,11 @@ class Student {
 
   }
   String get getFirstName{
-    return "OGR - "+ this.firsName;
+    return "OGR - "+ this.firstName;
 
   }
   void set setFirstName(String value){
-    this.firsName = value;
+    this.firstName = value;
 
   }
 
