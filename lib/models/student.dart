@@ -20,6 +20,9 @@ class Student {
     this.grade = grade;
 
   } // ekleme yapılırken kullanılacak sistem
+  Student.withoutInfo(){
+
+  }
   String get getFirstName{
     return "OGR - "+ this.firsName;
 
