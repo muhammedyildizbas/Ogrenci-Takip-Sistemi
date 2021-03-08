@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app2222/models/student.dart';
 import 'package:flutter_app2222/screens/student_add.dart';
+import 'package:flutter_app2222/screens/student_edit.dart';
 
 void main() {
   runApp(MaterialApp(home: MyApp()));
@@ -17,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   Student selectedStudent=Student.withId(0, "", "", 0);
 
   List<Student> students = [
-    Student.withId(1,"Engin", "Demiroğ", 25),
+    Student.withId(1,"Muhammed", "Yıldızbaş", 25),
     Student.withId(2,"Kerem", "Varış", 65),
     Student.withId(3,"Halil ", "Duymaz", 45)
   ];
@@ -39,7 +40,7 @@ class _MyAppState extends State<MyApp> {
                         backgroundImage: NetworkImage(
                             "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png"),
                       ),
-                      title: Text(students[index].firsName +
+                      title: Text(students[index].firstName +
                           " " +
                           students[index].lastName),
                       subtitle: Text("sınavdan aldığı not: " +
@@ -52,11 +53,11 @@ class _MyAppState extends State<MyApp> {
                         setState(() {
                          selectedStudent = students[index];
                         });
-                        print(selectedStudent.firsName + " "+ selectedStudent.lastName);
+                        print(selectedStudent.firstName + " "+ selectedStudent.lastName);
                       },
                     );
                   })),
-          Text("Seçili Öğrenci: " + selectedStudent.firsName + " "+ selectedStudent.lastName),
+          Text("Seçili Öğrenci: " + selectedStudent.firstName + " "+ selectedStudent.lastName),
           Row(
             children: <Widget>[
               Flexible(
@@ -75,7 +76,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   onPressed: () {
 
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentAdd()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentAdd(students)));
                   },
                 ),
               ),
@@ -94,8 +95,7 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                   onPressed: () {
-                    var mesaj = "Güncellendi";
-                    mesajGoster(context, mesaj);
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentEdit(selectedStudent)));
                   },
                 ),
               ),
@@ -118,7 +118,7 @@ class _MyAppState extends State<MyApp> {
                       students.remove(selectedStudent);
                     });
 
-                    var mesaj = "Silindi: "+ selectedStudent.firsName+" "+ selectedStudent.lastName;
+                    var mesaj = "Silindi: "+ selectedStudent.firstName+" "+ selectedStudent.lastName;
                     mesajGoster(context, mesaj);
                   },
                 ),
